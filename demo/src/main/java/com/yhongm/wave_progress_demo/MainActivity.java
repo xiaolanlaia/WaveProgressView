@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.SeekBar;
 
-import com.yhongm.wave_progress_view.WaveProgressView;
-
 
 public class MainActivity extends Activity {
     WaveProgressView waveProgresView;

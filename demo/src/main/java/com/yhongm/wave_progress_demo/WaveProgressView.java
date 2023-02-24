@@ -1,4 +1,4 @@
-package com.yhongm.wave_progress_view;
+package com.yhongm.wave_progress_demo;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -42,11 +42,7 @@ public class WaveProgressView extends View {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.WaveProgressView);
-        mWaterColor = typedArray.getColor(R.styleable.WaveProgressView_waterColor, mWaterColor);
-        mCircleColor = typedArray.getColor(R.styleable.WaveProgressView_circleColor, mWaterColor);
 
-        defaultProgress = typedArray.getFloat(R.styleable.WaveProgressView_progress, 0);
         initPaint();
         initAnimator();
 

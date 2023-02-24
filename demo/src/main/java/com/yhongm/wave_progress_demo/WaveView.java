@@ -7,11 +7,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -25,7 +28,6 @@ import android.view.animation.LinearInterpolator;
  * @Date 2023/2/24 7:21
  */
 public class WaveView extends View {
-    private Paint mPaintWhite;
     private Paint mPaintWave1;
     private Paint mPaintWave2;
     private int mWidth;
@@ -54,29 +56,29 @@ public class WaveView extends View {
 
 
         //设置图形混合方式，这里使用PorterDuff.Mode.XOR模式，与底层重叠部分设为透明
-        PorterDuffXfermode mode = new PorterDuffXfermode(PorterDuff.Mode.XOR);
+//        PorterDuffXfermode mode = new PorterDuffXfermode(PorterDuff.Mode.XOR);
         mPaintWave1 = new Paint();
         mPaintWave1.setAntiAlias(true);
         mPaintWave1.setDither(true);
         mPaintWave1.setColor(getResources().getColor(R.color.wave_2));
 //        mPaintWave1.setXfermode(mode);
-//        mPaintWave1.setAlpha(95);
+        mPaintWave1.setAlpha(100);
         mPaintWave1.setStyle(Paint.Style.FILL);
+
+
 
         mPaintWave2 = new Paint();
         mPaintWave2.setAntiAlias(true);
         mPaintWave2.setDither(true);
         mPaintWave2.setColor(getResources().getColor(R.color.wave_1));
-        mPaintWave2.setXfermode(mode);
 
-//        mPaintWave2.setAlpha(95);
+
+//        mPaintWave2.setXfermode(mode);
+
+        mPaintWave2.setAlpha(100);
         mPaintWave2.setStyle(Paint.Style.FILL);
 
-        mPaintWhite = new Paint();
-        mPaintWhite.setAntiAlias(true);
-        mPaintWhite.setDither(true);
-        mPaintWhite.setColor(getResources().getColor(R.color.wave_1));
-        mPaintWhite.setStyle(Paint.Style.FILL);
+
 
 
 
@@ -92,7 +94,6 @@ public class WaveView extends View {
         mWave2Length = MeasureUtils.measureView(widthMeasureSpec, 300) * 3;
         //水波的高度
         mWaveHeight = MeasureUtils.measureView(heightMeasureSpec, 300) / 6;
-
 
         startAnimation();
     }
@@ -132,7 +133,7 @@ public class WaveView extends View {
 
         //水波动画
         ValueAnimator valueAnimator = ValueAnimator.ofInt(0, mWave1Length);
-        valueAnimator.setDuration(1500);
+        valueAnimator.setDuration(4000);
 //        valueAnimator.setRepeatCount(Animation.INFINITE);
         valueAnimator.setInterpolator(new LinearInterpolator());
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -151,7 +152,7 @@ public class WaveView extends View {
 
         //水波升高动画
         ValueAnimator valueAnimatorHeight = ValueAnimator.ofInt(mHeight,mHeight / 2);
-        valueAnimatorHeight.setDuration(1500);
+        valueAnimatorHeight.setDuration(4000);
         valueAnimatorHeight.setRepeatCount(Animation.INFINITE);
         valueAnimatorHeight.setInterpolator(new LinearInterpolator());
         valueAnimatorHeight.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {

@@ -24,7 +24,7 @@
 ```
 ### 1，布局文件添加以下属性
 ```xml
-<com.yhongm.wave_progress_view.WaveProgressView
+<com.yhongm.wave_progress_demo.WaveProgressView
         android:id="@+id/wave_progress_view"
         android:layout_width="300dp"
         android:layout_height="300dp"
