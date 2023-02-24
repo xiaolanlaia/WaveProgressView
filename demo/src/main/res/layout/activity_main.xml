@@ -3,13 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.yhongm.wave_progress_demo.MainActivity">
+    android:layout_height="match_parent">
 
 
-    <com.yhongm.wave_progress_demo.WaveView
+    <com.yhongm.wave_progress_demo.MyBitmapViewAnother
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <View
+        android:visibility="gone"
         android:layout_centerInParent="true"
+        android:id="@+id/bg_view"
         android:background="#5C6674"
+        android:layout_width="600dp"
+        android:layout_height="600dp"/>
+    <com.yhongm.wave_progress_demo.WaveView
+        android:visibility="gone"
+        android:layout_alignTop="@+id/bg_view"
+        android:layout_alignStart="@+id/bg_view"
+        android:layout_alignEnd="@+id/bg_view"
+        android:layout_alignBottom="@+id/bg_view"
         android:layout_width="600dp"
         android:layout_height="600dp"/>
 
