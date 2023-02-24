@@ -72,6 +72,7 @@ public class WaveProgressView extends View {
     }
 
     private void initAnimator() {
+        //水波纹1 X轴
         ValueAnimator valueAnimator = ValueAnimator.ofInt(0, mWaveLength);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -84,8 +85,34 @@ public class WaveProgressView extends View {
         valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
         valueAnimator.setDuration(800);
         valueAnimator.start();
-        ValueAnimator valueAnimator2 = ValueAnimator.ofInt(0, mWaveLength);
 
+        //水波纹1 Y轴
+        ValueAnimator valueAnimatorWaveY = ValueAnimator.ofInt(80, 120);
+        valueAnimatorWaveY.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+
+
+                mWaveOffsetY = (int) animation.getAnimatedValue();
+
+
+//                int currentValue = (int) animation.getAnimatedValue();
+//                if (currentValue < 100){
+//                    mWaveOffsetY = currentValue;
+//                }else {
+//                    mWaveOffsetY = 100 - currentValue;
+//
+//                }
+
+            }
+        });
+        valueAnimatorWaveY.setInterpolator(new AccelerateInterpolator());
+        valueAnimatorWaveY.setRepeatCount(ValueAnimator.INFINITE);
+        valueAnimatorWaveY.setDuration(800);
+        valueAnimatorWaveY.start();
+
+
+        ValueAnimator valueAnimator2 = ValueAnimator.ofInt(0, mWaveLength);
         valueAnimator2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -96,17 +123,8 @@ public class WaveProgressView extends View {
         valueAnimator2.setRepeatCount(ValueAnimator.INFINITE);
         valueAnimator2.setDuration(1200);
         valueAnimator2.start();
-        ValueAnimator valueAnimatorWaveY = ValueAnimator.ofInt(80, 120);
-        valueAnimatorWaveY.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                mWaveOffsetY = (int) animation.getAnimatedValue();
-            }
-        });
-        valueAnimatorWaveY.setInterpolator(new AccelerateInterpolator());
-        valueAnimatorWaveY.setRepeatCount(ValueAnimator.INFINITE);
-        valueAnimatorWaveY.setDuration(800);
-        valueAnimatorWaveY.start();
+
+
         ValueAnimator valueAnimatorWaveY2 = ValueAnimator.ofInt(80, 120);
         valueAnimatorWaveY2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -156,7 +174,7 @@ public class WaveProgressView extends View {
         canvas.clipPath(mCirclePath);
         canvas.drawPath(mPath, mWavePaint);
         canvas.clipPath(mCirclePath);
-//        canvas.drawPath(mPath2, mWavePaint2);
+        canvas.drawPath(mPath2, mWavePaint2);
         canvas.drawPath(mCirclePath, mCirclePaint);
     }
 

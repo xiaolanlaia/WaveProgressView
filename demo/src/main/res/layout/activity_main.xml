@@ -6,13 +6,21 @@
     android:layout_height="match_parent"
     tools:context="com.yhongm.wave_progress_demo.MainActivity">
 
+
+    <com.yhongm.wave_progress_demo.WaveView
+        android:layout_centerInParent="true"
+        android:background="#5C6674"
+        android:layout_width="600dp"
+        android:layout_height="600dp"/>
+
     <com.yhongm.wave_progress_view.WaveProgressView
+        android:visibility="gone"
         android:id="@+id/wave_progress_view"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_centerInParent="true"
         app:circleColor="#e38854"
-        app:progress="0"
+        app:progress="50"
         app:waterColor="#5488e3" />
 
     <SeekBar

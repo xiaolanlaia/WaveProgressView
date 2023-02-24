@@ -34,4 +34,6 @@ public class MainActivity extends Activity {
             }
         });
     }
+    int progress = 0;
+
 }
